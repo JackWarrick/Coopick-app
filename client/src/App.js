@@ -14,6 +14,7 @@ function App() {
      <input type="text" name="blogPostContent"></input>
 
      <Button>Submit</Button>
+     <Button>Submit</Button>
      </div>
 
     </div>
