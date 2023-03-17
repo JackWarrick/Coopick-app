@@ -1,5 +1,5 @@
 import './App.css';
-import Button from 'react-bootstrap/Button'
+import { Button } from 'react-bootstrap'
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
      <label>Post content</label>
      <input type="text" name="blogPostContent"></input>
 
-     <button>Submit</button>
+     <Button>Submit</Button>
      </div>
 
     </div>
