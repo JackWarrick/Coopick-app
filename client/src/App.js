@@ -1,25 +1,24 @@
-import './App.css';
-import { Button } from 'react-bootstrap'
+import Init from "./pages/initial";
+import Login from "./pages/login";
+import Post from './pages/post';
+import Signup from "./pages/signup";
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 function App() {
   return (
     <div className="App">
-     <h1>Blog Posts</h1>
-     <Button>Test Button</Button>
-
-     <div className="form">
-     <label>Post title</label>
-     <input type="text" name="blogPostTitle"></input>
-     <label>Post content</label>
-     <input type="text" name="blogPostContent"></input>
-
-     <Button>Submit</Button>
-     <Button>Submit</Button>
-     <Button>Submit</Button>
-     <Button>Submit</Button>
-     <Button>Submit</Button>
-     </div>
-
+      <Router>
+        <>
+          <Routes>
+            <Route path="/" element={<Init />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/post" element={<Post />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+        </>
+      </Router>
     </div>
   );
 }
