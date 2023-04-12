@@ -1,18 +1,31 @@
 const router = require("express").Router();
 const { User } = require("../../models");
+const { createUser, login, logout } = require("../../utils/users");
 
-router.post("/", async (req, res) => {
+router.post('/signup', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    const { user, token } = await createUser(req.body);
+    res.status(201).json({ user, token });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
+router.post('/login', async (req, res) => {
+  try {
+    const { user, token } = await login(req.body.email, req.body.password);
+    res.json({ user, token });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
-      res.status(200).json(userData);
-    });
-  } catch (err) {
-    res.status(400).json(err);
+router.post('/logout', async (req, res) => {
+  try {
+    const { user, token } = await logout(req.body.email, req.body.password);
+    res.json({ user, token });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 });
 
