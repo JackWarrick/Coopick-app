@@ -1,84 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Form } from 'react-bootstrap'
+//axios is used to make requests to the server
+
 // import { Link } from 'react-router-dom';
 
 // import Auth from '../utils/auth';
 
-const Signup = () => {
-    // const [formState, setFormState] = useState({
-    //     username: '',
-    //     password: '',
-    // });
-    // const [addProfile, { error }] = useMutation(ADD_PROFILE);
+export default function Signup() {
 
-    // // update state based on form input changes
-    // const handleChange = (event) => {
-    //     const { name, value } = event.target;
-    //     setFormState({ ...formState, [name]: value });
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
 
-    // };
-
-    // // submit form
-    // const handleFormSubmit = async (event) => {
-    //     event.preventDefault();
-    //     console.log(formState);
-
-    //     try {
-    //         const { data } = await addProfile({
-    //             variables: { ...formState },
-    //         });
-
-    //         Auth.login(data.addProfile.token);
-    //     } catch (e) {
-    //         console.error(e);
-    //     }
-    //     setFormState({
-    //         username: '',
-    //         password: '',
-    //       });
-
+    const handleSignup = async (e) => {
+        e.preventDefault();
+        try {
+          const response = await axios.post('/api/signup', { name, password });
+          localStorage.setItem('token', response.data.token);
+          console.log('Signup successful.');
+        } catch (error) {
+          console.log(error);
+        }
+      };
     
 
     return (
+        <>
         <div className="App">
-            <div className="container">
-                <div className="row d-flex justify-content-center">
-                <div className="bg-secondary text-light">
-                <h1 className="display-1">SIGN UP</h1>
-                </div>
-                    <div className="col-md-4 m-2">
-                        
-                            <form>
-                                <div className="form-input">
-                                    <label>Username</label>
-                                    <input
-                                        className="form-control"
-                                        name="username"
-                                        type="text"
-                                        placeholder="Enter Username"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Password</label>
-                                    <input
-                                        type="password"
-                                        className="form-control"
-                                        name='password'
-                                        placeholder="Password"
-                                    />
-                                </div>
-                                <button type="submit" className="btn btn-primary m-2">
-                                    Sign Up
-                                </button>
-                            </form>
-                    
-                    </div>
-                </div>
+          <div className="container">
+            <div className="row d-flex justify-content-center">
+            <div className="bg-secondary text-light">
+              <h1 className="display-1">SIGN UP</h1>
+              </div>
+              <div className="col-md-4 m-2">
+                <Form onSubmit={handleSignup}>
+                  <Form.Group>
+                    <Form.Label>Name:</Form.Label>
+                    <Form.Control
+                      type="name"
+                      name="name"
+                      placeholder="Enter Name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+
+                  </Form.Group>
+                  <div className="form-group">
+                    <label>Password:</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      name="password"
+                      placeholder="Enter Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+
+                  <button type="submit" className="btn btn-primary m-2" >
+                    Login
+                  </button>
+                </Form>
+              </div>
             </div>
+          </div>
         </div>
+        </>
     );
     
 
 };
-
-
-export default Signup;

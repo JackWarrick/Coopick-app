@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 
+//the secret could be in the .env file I believe
 const secret = 'mysecretssshhhhhhh';
 const expiration = '2h';
 

@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 //import profilepic from '../../assets/me.jpeg';
 //import "../../styles/about.css"
 // import Auth from '../utils/auth';
 import { Form } from 'react-bootstrap'
 
+
 export default function Login() {
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+
+  // This may not create the user in the database 
+
+  const handleLogin = async (e) => {
+    
+    e.preventDefault();
+    try {
+      const response = await axios.post('/api/login', { name, password });
+      localStorage.setItem('token', response.data.token);
+      console.log('Login successful.');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
       
         return (
             <>
@@ -15,13 +34,15 @@ export default function Login() {
                 <h1 className="display-1">LOG IN</h1>
                 </div>
                 <div className="col-md-4 m-2">
-                  <Form>
+                  <Form onSubmit={handleLogin}>
                     <Form.Group>
-                      <Form.Label>Username:</Form.Label>
+                      <Form.Label>Name:</Form.Label>
                       <Form.Control
-                        type="text"
-                        name="username"
-                        placeholder="Enter Username"
+                        type="name"
+                        name="name"
+                        placeholder="Enter Name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                       />
 
                     </Form.Group>
@@ -31,7 +52,9 @@ export default function Login() {
                         type="password"
                         className="form-control"
                         name="password"
-                        placeholder="Password"
+                        placeholder="Enter Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                       />
                     </div>
 
@@ -46,4 +69,3 @@ export default function Login() {
           </>
         );
       }
-    
