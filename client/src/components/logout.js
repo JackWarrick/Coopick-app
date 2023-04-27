@@ -11,7 +11,7 @@ export default function Logout(){
     const handleLogout = async (e) => {
         e.preventDefault();
         try {
-          await axios.post('/api/logout');
+          await axios.post('/api/users/logout');
           localStorage.removeItem('token');
           console.log('Logout successful.');
         } catch (error) {

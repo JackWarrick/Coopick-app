@@ -5,7 +5,8 @@ import { Form } from 'react-bootstrap'
 
 // import { Link } from 'react-router-dom';
 
-// import Auth from '../utils/auth';
+import Auth from '../utils/auth';
+//Where do I bring the Auth in?
 
 export default function Signup() {
 
@@ -15,7 +16,7 @@ export default function Signup() {
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
-          const response = await axios.post('/api/signup', { name, password });
+          const response = await axios.post('/api/users', { name, password });
           localStorage.setItem('token', response.data.token);
           console.log('Signup successful.');
         } catch (error) {
@@ -23,7 +24,10 @@ export default function Signup() {
         }
       };
     
-
+      if (!Auth.loggedIn()) {
+        console.log(Auth.loggedIn);
+        return window.location.assign("/post");
+      } else {   
     return (
         <>
         <div className="App">
@@ -58,7 +62,7 @@ export default function Signup() {
                   </div>
 
                   <button type="submit" className="btn btn-primary m-2" >
-                    Login
+                    Signup
                   </button>
                 </Form>
               </div>
@@ -70,3 +74,4 @@ export default function Signup() {
     
 
 };
+}

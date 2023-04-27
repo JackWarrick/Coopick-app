@@ -7,8 +7,8 @@ const createUser = async (userData) => {
   return { user, token };
 };
 
-const login = async (email, password) => {
-  const user = await User.findOne({ where: { email } });
+const login = async (name, password) => {
+  const user = await User.findOne({ where: { name } });
   if (!user) {
     throw new Error('User not found.');
   }
