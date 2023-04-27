@@ -23,6 +23,56 @@
       "name": "Blake",
       "email": "the_blake@yahoo.com",
       "password": "password12345"
-    }
+    },
+    {
+      "name": "Cameron",
+      "email": "cameron_smith@gmail.com",
+      "password": "password12345"
+      },
+      {
+      "name": "Maddie",
+      "email": "maddie1990@yahoo.com",
+      "password": "password12345"
+      },
+      {
+      "name": "Parker",
+      "email": "parker_jones@hotmail.com",
+      "password": "password12345"
+      },
+      {
+      "name": "Sophia",
+      "email": "sophia_williams@aol.com",
+      "password": "password12345"
+      },
+      {
+      "name": "Elijah",
+      "email": "elijah_miller@msn.com",
+      "password": "password12345"
+      },
+      {
+      "name": "Riley",
+      "email": "riley_robinson@gmail.com",
+      "password": "password12345"
+      },
+      {
+      "name": "Avery",
+      "email": "avery_brown@yahoo.com",
+      "password": "password12345"
+      },
+      {
+      "name": "Casey",
+      "email": "casey_wilson@hotmail.com",
+      "password": "password12345"
+      },
+      {
+      "name": "Morgan",
+      "email": "morgan_moore@aol.com",
+      "password": "password12345"
+      },
+      {
+      "name": "Taylor",
+      "email": "taylor_clark@msn.com",
+      "password": "password12345"
+      }
   ]
   
