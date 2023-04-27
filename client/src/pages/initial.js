@@ -1,7 +1,13 @@
 import React from "react";
+import Auth from '../utils/auth';
 
 export default function Init() {
 
+
+    if (!Auth.loggedIn()) {
+        console.log(Auth.loggedIn);
+        return window.location.assign("/post");
+      } else {   
     return (
         <div className="m-2">
             <h1 className="display-1 d-flex justify-content-center">Coopick social media app</h1>
@@ -12,4 +18,5 @@ export default function Init() {
         </div>
     );
 
+};
 }

@@ -3,6 +3,7 @@ import axios from 'axios';
 //import profilepic from '../../assets/me.jpeg';
 //import "../../styles/about.css"
 // import Auth from '../utils/auth';
+import Auth from '../utils/auth';
 import { Form } from 'react-bootstrap'
 
 
@@ -16,15 +17,19 @@ export default function Login() {
     
     e.preventDefault();
     try {
-      const response = await axios.post('/api/login', { name, password });
+      const response = await axios.post('/api/users', { name, password });
       localStorage.setItem('token', response.data.token);
       console.log('Login successful.');
+
     } catch (error) {
       console.log(error);
     }
   };
 
-      
+  if (!Auth.loggedIn()) {
+    console.log(Auth.loggedIn);
+    return window.location.assign("/post");
+  } else {   
         return (
             <>
           <div className="App">
@@ -68,4 +73,5 @@ export default function Login() {
           </div>
           </>
         );
-      }
+      };
+    }

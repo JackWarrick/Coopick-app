@@ -3,8 +3,14 @@ import Logout from '../components/logout';
 //import profilepic from '../../assets/me.jpeg';
 //import "../../styles/about.css"
 import { Button } from 'react-bootstrap'
+import Auth from '../utils/auth';
 
 export default function Post() {
+
+  if (!Auth.loggedIn()) {
+    console.log(Auth.loggedIn);
+    return window.location.assign("/");
+  } else {   
       
         return (
             
@@ -22,4 +28,5 @@ export default function Post() {
         </div>
         );
       }
+    }
     
