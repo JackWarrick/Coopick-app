@@ -15,5 +15,9 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0"
+  },
+  "proxy": "http://localhost:3001",
+  "dependencies": {
+    "cors": "^2.8.5"
   }
 }
