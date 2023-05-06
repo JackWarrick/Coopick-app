@@ -24,6 +24,7 @@ export default function Signup() {
       );
       localStorage.setItem("token", response.data.token);
       console.log("Signup successful.");
+      return window.location.assign("/post");
     } catch (error) {
       console.log(error);
     }
