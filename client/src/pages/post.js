@@ -6,15 +6,15 @@ import { Button } from "react-bootstrap";
 import Auth from "../utils/auth";
 
 export default function Post() {
-  if (Auth.loggedIn()) {
-    console.log(Auth.loggedIn);
+  if (!Auth.loggedIn()) {
+    console.log("Not logged in")
     return window.location.assign("/");
   } else {
+    console.log("Logged in")
     return (
       <div className="App">
         <Logout />
         <h1>Blog Posts</h1>
-        <Button>Test Button</Button>
         <div className="form">
           <label>Post title</label>
           <input type="text" name="blogPostTitle"></input>

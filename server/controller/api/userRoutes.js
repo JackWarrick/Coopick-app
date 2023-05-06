@@ -14,7 +14,7 @@ router.post("/signup", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const { user, token } = await login(req.body.email, req.body.password);
+    const { user, token } = await login(req.body.name, req.body.password);
     res.json({ user, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -23,7 +23,7 @@ router.post("/login", async (req, res) => {
 
 router.post("/logout", async (req, res) => {
   try {
-    const { user, token } = await logout(req.body.email, req.body.password);
+    const { user, token } = await logout(req.body.name, req.body.password);
     res.json({ user, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
