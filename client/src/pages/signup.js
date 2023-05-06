@@ -1,40 +1,45 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Form } from 'react-bootstrap'
+import React, { useState } from "react";
+import axios from "axios";
+import { Form } from "react-bootstrap";
 //axios is used to make requests to the server
 
 // import { Link } from 'react-router-dom';
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 //Where do I bring the Auth in?
 
 export default function Signup() {
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
 
-    const [name, setName] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleSignup = async (e) => {
-        e.preventDefault();
-        try {
-          const response = await axios.post('/api/users', { name, password });
-          localStorage.setItem('token', response.data.token);
-          console.log('Signup successful.');
-        } catch (error) {
-          console.log(error);
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/api/users/signup",
+        {
+          name,
+          password,
         }
-      };
-    
-      if (!Auth.loggedIn()) {
-        console.log(Auth.loggedIn);
-        return window.location.assign("/post");
-      } else {   
+      );
+      localStorage.setItem("token", response.data.token);
+      console.log("Signup successful.");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  if (Auth.loggedIn()) {
+    console.log(Auth.loggedIn);
+    return window.location.assign("/post");
+  } else {
     return (
-        <>
+      <>
         <div className="App">
           <div className="container">
             <div className="row d-flex justify-content-center">
-            <div className="bg-secondary text-light">
-              <h1 className="display-1">SIGN UP</h1>
+              <div className="bg-secondary text-light">
+                <h1 className="display-1">SIGN UP</h1>
               </div>
               <div className="col-md-4 m-2">
                 <Form onSubmit={handleSignup}>
@@ -47,7 +52,6 @@ export default function Signup() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                     />
-
                   </Form.Group>
                   <div className="form-group">
                     <label>Password:</label>
@@ -61,7 +65,7 @@ export default function Signup() {
                     />
                   </div>
 
-                  <button type="submit" className="btn btn-primary m-2" >
+                  <button type="submit" className="btn btn-primary m-2">
                     Signup
                   </button>
                 </Form>
@@ -69,9 +73,7 @@ export default function Signup() {
             </div>
           </div>
         </div>
-        </>
+      </>
     );
-    
-
-};
+  }
 }
