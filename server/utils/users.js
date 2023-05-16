@@ -1,7 +1,6 @@
-
-const { User } = require('../models');
-const { generateToken } = require('../utils/auth');
-bcrypt = require('bcrypt');
+const { User } = require("../models");
+const { generateToken } = require("../utils/auth");
+bcrypt = require("bcrypt");
 
 const createUser = async (userData) => {
   const user = await User.create(userData);
@@ -14,7 +13,7 @@ const login = async (name, password) => {
   if (!user) {
     throw new Error("User not found.");
   }
-  const isMatch = await bcrypt.compare(password, hashedPassword);
+  const isMatch = await userData.checkPassword(password);
   if (!isMatch) {
     throw new Error("Invalid email or password.");
   }
@@ -22,15 +21,4 @@ const login = async (name, password) => {
   return { user, token };
 };
 
-const logout = async (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-
-module.exports = { createUser, login, logout };
+module.exports = { createUser, login };
