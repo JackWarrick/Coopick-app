@@ -14,14 +14,20 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:3001/api/users/login", { name, password });
-      localStorage.setItem("token", response.data.token);
-      console.log("Login successful.");
-    } catch (error) {
-      console.log(error);
-      console.log(name, password)
-    }
+    await axios
+      .post("http://localhost:3001/api/users/login", {
+        name: name,
+        password: password,
+      })
+      .then(function (response) {
+        console.log(response);
+        localStorage.setItem("token", response.data.token);
+        console.log("Login successful.");
+        window.location.assign("/post");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   if (Auth.loggedIn()) {
@@ -32,9 +38,9 @@ export default function Login() {
       <>
         <div className="App">
           <div className="container">
-          <button className="btn btn-light m-2" >
-                    <a href="/" >Return to initial page</a>
-                    </button>
+            <button className="btn btn-light m-2">
+              <a href="/">Return to initial page</a>
+            </button>
             <div className="row d-flex justify-content-center">
               <div className="bg-secondary text-light">
                 <h1 className="display-1">LOG IN</h1>

@@ -9,11 +9,12 @@ const createUser = async (userData) => {
 };
 
 const login = async (name, password) => {
+  console.log(name, password);
   const user = await User.findOne({ where: { name } });
   if (!user) {
     throw new Error("User not found.");
   }
-  const isMatch = await userData.checkPassword(password);
+  const isMatch = await user.checkPassword(password);
   if (!isMatch) {
     throw new Error("Invalid email or password.");
   }
