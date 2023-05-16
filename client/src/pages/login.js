@@ -23,7 +23,7 @@ export default function Login() {
         console.log(response);
         localStorage.setItem("token", response.data.token);
         console.log("Login successful.");
-        window.location.assign("/post");
+        window.location.assign("/home");
       })
       .catch(function (error) {
         console.log(error);
@@ -32,7 +32,7 @@ export default function Login() {
 
   if (Auth.loggedIn()) {
     console.log(Auth.loggedIn);
-    return window.location.assign("/post");
+    return window.location.assign("/home");
   } else {
     return (
       <>

@@ -32,15 +32,15 @@ export default function Signup() {
 
   if (Auth.loggedIn()) {
     console.log(Auth.loggedIn);
-    return window.location.assign("/post");
+    return window.location.assign("/home");
   } else {
     return (
       <>
         <div className="App">
           <div className="container">
-          <button className="btn btn-light m-2" >
-                    <a href="/" >Return to initial page</a>
-                    </button>
+            <button className="btn btn-light m-2">
+              <a href="/">Return to initial page</a>
+            </button>
             <div className="row d-flex justify-content-center">
               <div className="bg-secondary text-light">
                 <h1 className="display-1">SIGN UP</h1>

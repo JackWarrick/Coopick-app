@@ -7,13 +7,18 @@ import Auth from "../utils/auth";
 
 export default function Post() {
   if (!Auth.loggedIn()) {
-    console.log("Not logged in")
+    console.log("Not logged in");
     return window.location.assign("/");
   } else {
-    console.log("Logged in")
+    console.log("Logged in");
     return (
       <div className="App">
-        <Logout />
+        <div>
+          <Logout />
+          <a href="./home" className="m-2">
+            <button className="btn btn-primary">Homepage</button>
+          </a>
+        </div>
         <h1>Blog Posts</h1>
         <div className="form">
           <label>Post title</label>
