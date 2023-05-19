@@ -1,5 +1,6 @@
 import React from "react";
 import Auth from "../utils/auth";
+import Logout from "../components/logout";
 
 export default function Homepage() {
   if (!Auth.loggedIn()) {
@@ -8,6 +9,7 @@ export default function Homepage() {
   } else {
     return (
       <div className="m-2">
+         <Logout />
         <h1 className="display-1 d-flex justify-content-center">
           Coopick social media app
         </h1>

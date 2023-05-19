@@ -13,19 +13,19 @@ export default function Post() {
     console.log("Logged in");
     return (
       <div className="App">
-        <div>
+        <div className= "m-2">
           <Logout />
           <a href="./home" className="m-2">
-            <button className="btn btn-primary">Homepage</button>
+            <button className="btn btn-primary">Home</button>
           </a>
         </div>
         <h1>Blog Posts</h1>
         <div className="form">
-          <label>Post title</label>
+          <label>Post Title</label>
           <input type="text" name="blogPostTitle"></input>
-          <label>Post content</label>
+          <label>Post Content</label>
           <input type="text" name="blogPostContent"></input>
-          <Button>Submit</Button>
+          <button className="btn btn-success">Submit</button>
         </div>
       </div>
     );
