@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Auth from "../utils/auth";
 import Logout from "../components/logout";
 import axios from "axios";
+import { Card } from "react-bootstrap"
 
 
 export default function Homepage() {
@@ -21,7 +22,7 @@ useEffect(() => {
 
   if (!Auth.loggedIn()) {
     console.log(Auth.loggedIn);
-    return window.location.assign("/init");
+    return window.location.assign("/");
   } else {
 
     return (
@@ -38,10 +39,12 @@ useEffect(() => {
         <div className="d-flex justify-content-center">
           <h3>Posts</h3>
           {posts.map((post) => (
-        <div key={post.id}>
-          <h3>{post.message}</h3>
-          <p>Date: {post.date_created}</p>
-        </div>
+            <Card key={post.id} className="m-3" style={{ width: "18rem" }}>
+              <Card.Body>
+                <Card.Title>{post.message}</Card.Title>
+                <Card.Text>Date: {post.date_created}</Card.Text>
+              </Card.Body>
+            </Card>
       ))}
         </div>
       </div>
