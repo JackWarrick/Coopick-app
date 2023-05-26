@@ -9,6 +9,7 @@ import { Form } from "react-bootstrap";
 export default function Login() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   // This may not create the user in the database
 
@@ -26,7 +27,12 @@ export default function Login() {
         window.location.assign("/home");
       })
       .catch(function (error) {
-        console.log(error);
+        if (error.response) {
+          // Show error message
+          setError(error.response.data.error);
+        } else {
+          setError("Invalid username/password. Please try again.");
+        }
       });
   };
 
@@ -72,6 +78,7 @@ export default function Login() {
                   <button type="submit" className="btn btn-primary m-2">
                     Login
                   </button>
+                  {error && <p>{error}</p>}
                 </Form>
               </div>
             </div>
