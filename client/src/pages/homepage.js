@@ -2,32 +2,31 @@ import React, { useEffect, useState } from "react";
 import Auth from "../utils/auth";
 import Logout from "../components/logout";
 import axios from "axios";
-import { Card } from "react-bootstrap"
-
+import { Card } from "react-bootstrap";
+import moment from "moment";
 
 export default function Homepage() {
-const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-useEffect(() => {
-  const fetchPosts = async () => {
-    try {
-      const response = await axios.get("/api/posts");
-      setPosts(response.data);
-    } catch (error){
-      console.error(error);
-    }
-  };
-  fetchPosts();
-}, []);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get("/api/posts");
+        setPosts(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchPosts();
+  }, []);
 
   if (!Auth.loggedIn()) {
     console.log(Auth.loggedIn);
     return window.location.assign("/");
   } else {
-
     return (
       <div className="m-2">
-         <Logout />
+        <Logout />
         <h1 className="display-1 d-flex justify-content-center">
           Coopick social media app
         </h1>
@@ -42,10 +41,12 @@ useEffect(() => {
             <Card key={post.id} className="m-3" style={{ width: "18rem" }}>
               <Card.Body>
                 <Card.Title>{post.message}</Card.Title>
-                <Card.Text>Date: {post.date_created}</Card.Text>
+                <Card.Text>
+                  Date: {moment(post.date_created).format("MM-DD-YYYY")}
+                </Card.Text>
               </Card.Body>
             </Card>
-      ))}
+          ))}
         </div>
       </div>
     );
