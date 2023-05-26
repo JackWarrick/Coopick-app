@@ -18,9 +18,11 @@ export default function Logout() {
 
   return (
     <>
-      <Button variant="danger" className="d-inline-flex" onClick={handleLogout}>
-        Logout
-      </Button>
+      <a href="/" className="m-2">
+        <Button variant="danger" className="btn-lg" onClick={handleLogout}>
+          Logout
+        </Button>
+      </a>
     </>
   );
 }
