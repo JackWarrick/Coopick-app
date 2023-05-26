@@ -35,10 +35,15 @@ export default function Homepage() {
           <button className="btn btn-primary">Make a Post!</button>
         </a>
 
-        <div className="d-flex justify-content-center">
-          <h3>Posts</h3>
+        <h3>Posts</h3>
+
+        <div>
           {posts.map((post) => (
-            <Card key={post.id} className="m-3" style={{ width: "18rem" }}>
+            <Card
+              key={post.id}
+              className="my-3 mx-auto"
+              style={{ width: "18rem" }}
+            >
               <Card.Body>
                 <Card.Title>{post.message}</Card.Title>
                 <Card.Text>
