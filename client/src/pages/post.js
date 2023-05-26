@@ -32,17 +32,17 @@ export default function Post() {
   } else {
     return (
       <div className="App">
-        <div className="m-2">
+        <div className="m-2 d-flex justify-content-between">
           <Logout />
           <a href="./home" className="m-2">
-            <button className="btn btn-primary">Home</button>
+            <button className="btn btn-primary btn-lg">Home</button>
           </a>
         </div>
         <h1>Post Content</h1>
         <div className="form">
           <form onSubmit={handleSubmit}>
             <textarea
-              className="form-control"
+              className="form-control m-1"
               type="text"
               name="blogPostContent"
               value={message}
@@ -50,7 +50,7 @@ export default function Post() {
               rows="3"
             ></textarea>
             <div>
-              <button className="btn btn-success" type="submit">
+              <button className="btn btn-success btn-lg" type="submit">
                 Submit
               </button>
             </div>

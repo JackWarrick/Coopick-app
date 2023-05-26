@@ -13,10 +13,10 @@ export default function Init() {
         </h1>
         <div className="d-flex justify-content-center">
           <a href="./login" className="m-2">
-            <button className="btn btn-primary">Login</button>
+            <button className="btn btn-primary btn-lg">Login</button>
           </a>
           <a href="./signup" className="m-2">
-            <button className="btn btn-primary">Sign Up</button>
+            <button className="btn btn-primary btn-lg">Sign Up</button>
           </a>
         </div>
       </div>

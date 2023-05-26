@@ -69,7 +69,7 @@ export default function Signup() {
                     />
                   </div>
 
-                  <button type="submit" className="btn btn-primary m-2">
+                  <button type="submit" className="btn btn-primary btn-lg m-2">
                     Signup
                   </button>
                 </Form>

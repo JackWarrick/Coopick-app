@@ -26,32 +26,35 @@ export default function Homepage() {
   } else {
     return (
       <div className="m-2">
-        <Logout />
+        <div className="d-flex justify-content-between">
+          <Logout />
+          <a href="./post" className="m-2">
+            <button className="btn btn-primary btn-lg">Make a Post!</button>
+          </a>
+        </div>
         <h1 className="display-1 d-flex justify-content-center">
           Coopick social media app
         </h1>
 
-        <a href="./post" className="m-2">
-          <button className="btn btn-primary">Make a Post!</button>
-        </a>
-
-        <h3>Posts</h3>
-
         <div>
-          {posts.map((post) => (
-            <Card
-              key={post.id}
-              className="my-3 mx-auto"
-              style={{ width: "18rem" }}
-            >
-              <Card.Body>
-                <Card.Title>{post.message}</Card.Title>
-                <Card.Text>
-                  Date: {moment(post.date_created).format("MM-DD-YYYY")}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          ))}
+          <h3 className="mt-3">All Posts</h3>
+
+          <div>
+            {posts.map((post) => (
+              <Card
+                key={post.id}
+                className="my-3 mx-auto"
+                style={{ width: "18rem" }}
+              >
+                <Card.Body>
+                  <Card.Title>{post.message}</Card.Title>
+                  <Card.Text>
+                    Date: {moment(post.date_created).format("MM-DD-YYYY")}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     );
