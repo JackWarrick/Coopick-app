@@ -30,7 +30,6 @@ export default function Post() {
     console.log("Not logged in");
     return window.location.assign("/");
   } else {
-    console.log("Logged in");
     return (
       <div className="App">
         <div className="m-2">
@@ -39,19 +38,22 @@ export default function Post() {
             <button className="btn btn-primary">Home</button>
           </a>
         </div>
-        <h1>Blog Posts</h1>
+        <h1>Post Content</h1>
         <div className="form">
           <form onSubmit={handleSubmit}>
-            <label>Post Content</label>
-            <input
+            <textarea
+              className="form-control"
               type="text"
               name="blogPostContent"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-            />
-            <button className="btn btn-success" type="submit">
-              Submit
-            </button>
+              rows="3"
+            ></textarea>
+            <div>
+              <button className="btn btn-success" type="submit">
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>
